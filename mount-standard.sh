@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-o=defaults.x-mount.mkdir
+o=defaults,x-mount.mkdir
 o_btrfs=$o,compress=lzo,ssd,noatime
 
 umount -R /mnt
