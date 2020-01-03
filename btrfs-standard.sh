@@ -38,13 +38,16 @@ sgdisk --clear \
 
 echo Partition table created. Creating file systems
 
+sleep 2
 echo Creating EFI fs...
 mkfs.fat -F32 -n EFI /dev/disk/by-partlabel/EFI
 
-sleep 1
+sleep 2
 
 echo Done. Creating swap  fs
 mkswap -L swap /dev/disk/by-partlabel/swap
+
+sleep 1
 swapon -L swap 
 sleep 1
 
@@ -62,8 +65,14 @@ mount -t btrfs LABEL=system /mnt
 echo Creating subvolumes...
 
 btrfs subvolume create /mnt/root
+
+sleep 1
 btrfs subvolume create /mnt/home
+
+sleep 1
 btrfs subvolume create /mnt/snapshots
+
+sleep 1
 
 echo Done. Unmounting..
 
@@ -71,8 +80,13 @@ umount -R /mnt
 
 echo Mounting subvolumes
 
+sleep 1
 mount -t btrfs -o subvol=root,$o_btrfs LABEL=system /mnt
+
+sleep 1
 mount -t btrfs -o subvol=home,$o_btrfs LABEL=system /mnt/home
+
+sleep 1
 mount -t btrfs -o subvol=snapshots,$o_btrfs LABEL=system /mnt/.snapshots
 
 
