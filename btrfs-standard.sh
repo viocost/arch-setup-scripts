@@ -57,7 +57,7 @@ echo Done. Mounting...
 
 sleep 1
 
-o=defaults.x-mount.mkdir
+o=defaults,x-mount.mkdir
 o_btrfs=$o,compress=lzo,ssd,noatime
 
 mount -t btrfs LABEL=system /mnt
