@@ -1,9 +1,9 @@
 #!/bin/bash
-#
-# Initializes refind configuration file
-# Assumes that partlabel for root subvolume is set to system
-#
-# Must run as new installation root after arch-chroot
+
+pacman -Sy refind-efi
+refind-install --alldrivers
+cp /usr/share/refind/refind_x64.efi /boot/EFI/Boot/bootx64.efi
+cp -r /usr/share/refind/drivers_x64/ /boot/EFI/Boot/
 
 
 UUID=$(blkid /dev/disk/by-partlabel/system -o export | grep PARTUUID | awk -F "=" '/1/ { print $2 }')

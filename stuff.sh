@@ -15,3 +15,5 @@ echo "127.0.0.1  localhost
 
 sed -i '/^#ru_RU\.UTF-8.*/s/^#//' /etc/locale.gen
 sed -i '/^#en_US\.UTF-8.*/s/^#//' /etc/locale.gen
+locale-gen
+
