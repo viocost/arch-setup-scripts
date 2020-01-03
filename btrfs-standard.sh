@@ -39,16 +39,20 @@ sgdisk --clear \
 echo Partition table created. Creating file systems
 
 echo Creating EFI fs...
-mkfs.fat -F32 -n EFI /dev/disk/by-label/EFI
+mkfs.fat -F32 -n EFI /dev/disk/by-partlabel/EFI
+
+sleep 1
 
 echo Done. Creating swap  fs
-mkswap -L swap /dev/disk/by-label/swap
+mkswap -L swap /dev/disk/by-partlabel/swap
 swapon -L swap 
+sleep 1
 
 echo Done. Creating btrfs system...
-mkfs.btrfs --force --label system /dev/disk/by-label/system
+mkfs.btrfs --force --label system /dev/disk/by-partlabel/system
 echo Done. Mounting...
 
+sleep 1
 
 o=defaults.x-mount.mkdir
 o_btrfs=$o,compress=lzo,ssd,noatime
