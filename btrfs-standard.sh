@@ -24,6 +24,7 @@ read -p "Press enter to continue..."
 
 echo Clearing disk...
 
+swapoff -a
 sgdisk --zap-all $1
 
 echo Done. Creating new partition table
