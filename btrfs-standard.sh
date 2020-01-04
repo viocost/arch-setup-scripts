@@ -24,6 +24,7 @@ read -p "Press enter to continue..."
 
 echo Clearing disk...
 
+umount -R /mnt
 swapoff -a
 sgdisk --zap-all $1
 
