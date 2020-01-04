@@ -1,21 +1,9 @@
 #!/bin/bash
 
 
-
-function create_user(){
-	read  -p "Enter username for new user: " username
-	if [[ ${#username} -gt 0 ]]; then
-		echo creating new user "$username"
-		useradd -m -G wheel -s /bin/bash "$username"
-		passwd "$username"
-	fi
+function install_nvidia(){
+	
 }
-
-function install_packages(){
-	pacman -Sy --noconfirm man git 
-}
-
-
 
 function ask_question(){
 	while true; do
@@ -34,20 +22,23 @@ function ask_question(){
 	done
 }
 
-if  [[ $(ask_question "Create user? ")  -gt 0 ]] ; then
-	create_user
-fi
+sudo pacman -Sy nvidia-lts
+sudo pacman -Sy xorg
+
+sudo pacman -Sy lightdm
+sudo systemctl enable lightdm.service
+sudo pacman -Sy lightdm-gtk-greeter
+sudo pacman -Sy tilix
+
+sudo pacman -Sy i3-gaps
+sudo pacman -Sy dmenu
+sudo pacman -Sy nitrogen
+sudo pacman -Sy compton
+sudo yaourt -Sy polybar --noconfirm
+
+sudo pacman -Sy htop lm_sensors
+sensors-detect
 
 
-if  [[ $(ask_question "Install misc packages?")  -gt 0 ]] ; then
-	install_packages
-fi
 
 
-
-
-
-
-# Adding wheel group to sudoers without password
-
-sed -i '/^# %wheel.* NOPASSWD.*/s/^#//' /etc/sudoers
