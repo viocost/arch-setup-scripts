@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacstrap /mnt base base-devel btrfs-progs vim sudo intel-ucode wpa-supplicant
+pacstrap /mnt base linux btrfs-progs vim sudo
 
 
 genfstab -U /mnt > /mnt/etc/fstab

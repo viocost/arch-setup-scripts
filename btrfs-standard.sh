@@ -91,6 +91,10 @@ mount -t btrfs -o subvol=home,$o_btrfs LABEL=system /mnt/home
 sleep 1
 mount -t btrfs -o subvol=snapshots,$o_btrfs LABEL=system /mnt/.snapshots
 
+if [[ ! -d /mnt/boot ]]; then
+	mkdir /mnt/boot
+fi
+
 mount LABEL=EFI /mnt/boot
 
 
