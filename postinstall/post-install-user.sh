@@ -39,6 +39,12 @@ sudo yaourt -Sy polybar --noconfirm
 sudo pacman -Sy htop lm_sensors
 sensors-detect
 
+sudo pacman -Sy pulseaudio
 
+pulseaudio --start
 
+# fonts browser
+sudo pacman -Sy gucharmap
 
+# disable default bitmap fonts
+sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d

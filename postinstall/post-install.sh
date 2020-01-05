@@ -16,6 +16,15 @@ function install_packages(){
 }
 
 
+function fix_iwlwifi_intel(){
+	path="/etc/modprobe.d/iwlwifi.conf"
+	if [[ ! -f "$path" ]] || grep -Fxq "*11n_disable=1*swcrypto=1*" "$path"; then 
+		echo "options iwlwifi 11n_disable=1 swcrypto=1" >> /etc/modprobe.d/iwlwifi.conf;
+		echo iwlwifi config updated
+	else
+		echo config already exists
+	fi
+}
 
 function ask_question(){
 	while true; do
@@ -33,6 +42,11 @@ function ask_question(){
 		esac
 	done
 }
+
+
+if  [[ $(ask_question "Fix intel wifi settings?")  -gt 0 ]] ; then
+	fix_iwlwifi_intel
+fi
 
 if  [[ $(ask_question "Create user? ")  -gt 0 ]] ; then
 	create_user
