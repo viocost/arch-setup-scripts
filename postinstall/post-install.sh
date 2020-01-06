@@ -6,7 +6,7 @@ function create_user(){
 	read  -p "Enter username for new user: " username
 	if [[ ${#username} -gt 0 ]]; then
 		echo creating new user "$username"
-		useradd -m -G wheel -s /bin/bash "$username"
+		useradd -m -G wheel,video -s /bin/bash "$username"
 		passwd "$username"
 	fi
 }

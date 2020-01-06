@@ -47,4 +47,10 @@ pulseaudio --start
 sudo pacman -Sy gucharmap
 
 # disable default bitmap fonts
-sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+#sudo ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d
+
+# Brightness module
+sudo pacman -Sy acpilight
+
+# TODO
+# Bumblebee mesa add configuration to bumblebee intel-virtual-output  alsa tools
