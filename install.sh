@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacstrap /mnt base linux linux-firmware btrfs-progs vim sudo
+pacstrap /mnt base linux linux-firmware btrfs-progs vim sudo netctl
 
 genfstab -U /mnt > /mnt/etc/fstab
 
