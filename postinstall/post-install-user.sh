@@ -27,7 +27,16 @@ sudo pacman -Sy xorg
 
 sudo pacman -Sy lightdm
 sudo systemctl enable lightdm.service
+
+# Default
 sudo pacman -Sy lightdm-gtk-greeter
+
+# Good looking
+sudo pacman -Sy lightdm-webkit2-greeter
+
+# TODO change /etc/lightdm/lightdm.conf to apply settings
+
+
 sudo pacman -Sy tilix
 
 sudo pacman -Sy i3-gaps
@@ -54,3 +63,11 @@ sudo pacman -Sy acpilight
 
 # TODO
 # Bumblebee mesa add configuration to bumblebee intel-virtual-output  alsa tools
+
+sudo pacman -Sy falmeshot
+
+sudo pacman -Sy vlc
+
+# Image viewer
+sudo pacman -S sxiv
+
