@@ -23,24 +23,34 @@ function ask_question(){
 }
 
 sudo pacman -Sy nvidia-lts
-sudo pacman -Sy xorg
+sudo pacman -Sy xorg xorg-xinit
 
-sudo pacman -Sy lightdm
-sudo systemctl enable lightdm.service
+# COMMENTING THIS OUT cause why the hell we need stupid display manager?
+#sudo pacman -Sy lightdm
+#sudo systemctl enable lightdm.service
 
 # Default
-sudo pacman -Sy lightdm-gtk-greeter
+#sudo pacman -Sy lightdm-gtk-greeter
 
 # Good looking
-sudo pacman -Sy lightdm-webkit2-greeter
+#sudo pacman -Sy lightdm-webkit2-greeter
+#yaourt -S lightdm-webkit-theme-aether
+#sudo sed -i 's/^webkit_theme\s*=\s*\(.*\)/webkit_theme = lightdm-webkit-theme-aether #\1/g' /etc/lightdm/lightdm-webkit2-greeter.conf
+
 
 # TODO change /etc/lightdm/lightdm.conf to apply settings
 
-
-sudo pacman -Sy tilix
+#
+#sudo pacman -Sy tilix
+#install st
 
 sudo pacman -Sy i3-gaps
 sudo pacman -Sy dmenu
+
+# notification daemon
+sudo pacman -S dunst
+
+# Wallpaper
 sudo pacman -Sy nitrogen
 sudo pacman -Sy compton
 sudo yaourt -Sy polybar --noconfirm
@@ -70,4 +80,8 @@ sudo pacman -Sy vlc
 
 # Image viewer
 sudo pacman -S sxiv
+
+# Pdf doc viewer and pdf plugin
+sudo pacman -S zathura
+sudo pacman -S zathura-pdf-poppler
 
