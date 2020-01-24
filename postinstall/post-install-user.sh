@@ -1,9 +1,6 @@
 #!/bin/bash
 
 
-function install_nvidia(){
-	
-}
 
 function ask_question(){
 	while true; do
@@ -39,9 +36,28 @@ function st(){
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
+cd ../
 
-sudo pacman -Sy nvidia-lts
 sudo pacman -Sy xorg xorg-xinit
+sudo pacman -Sy nvidia
+sudo echo '
+Section "OutputClass"
+    Identifier "nvidia"
+    MatchDriver "nvidia-drm"
+    Driver "nvidia"
+    Option "AllowEmptyInitialConfiguration"
+    Option "PrimaryGPU" "yes"
+    ModulePath "/usr/lib/nvidia/xorg"
+    ModulePath "/usr/lib/xorg/modules"
+EndSection 
+
+' > /etc/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+sudo echo '
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+' > /home/kostia/.xinitrc
+
 
 # COMMENTING THIS OUT cause why the hell we need stupid display manager?
 #sudo pacman -Sy lightdm
@@ -70,8 +86,8 @@ sudo pacman -S dunst
 
 # Wallpaper
 sudo pacman -Sy nitrogen
-sudo pacman -Sy compton
-sudo yaourt -Sy polybar --noconfirm
+sudo pacman -Sy picom
+yay -Sy polybar --noconfirm
 
 sudo pacman -Sy htop lm_sensors
 sensors-detect
@@ -102,4 +118,5 @@ sudo pacman -S sxiv
 # Pdf doc viewer and pdf plugin
 sudo pacman -S zathura
 sudo pacman -S zathura-pdf-poppler
+sudo pacman -S wget
 

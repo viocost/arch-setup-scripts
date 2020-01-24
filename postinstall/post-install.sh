@@ -44,9 +44,6 @@ function ask_question(){
 }
 
 
-if  [[ $(ask_question "Fix intel wifi settings?")  -gt 0 ]] ; then
-	fix_iwlwifi_intel
-fi
 
 if  [[ $(ask_question "Create user? ")  -gt 0 ]] ; then
 	create_user
