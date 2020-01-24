@@ -20,5 +20,6 @@ locale-gen
 passwd
 
 
+systemctl enable dhcpcd
 
 
