@@ -9,7 +9,8 @@ function st(){
     make
     sudo make install
     cd ../
-    rm -rf st
+    rm  st-0.8.2.tar.gz
+    rm -rf st-0.8.2
 }
 
 st
