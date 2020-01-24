@@ -1,0 +1,29 @@
+Filesystem
+    Kernel 
+    base
+    base-devel
+    linux 
+    linux-firmware
+    brrfs-progs
+    sudo
+    netctl
+    dhcpcd
+    grub
+    locale
+    alsa pulseaudio
+
+    yay
+	    polybar
+    git 
+    timeshift
+    
+    zsh
+    i3
+    fonts
+    
+    st
+    
+    
+    config dot files
+    
+    

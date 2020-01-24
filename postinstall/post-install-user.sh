@@ -22,6 +22,24 @@ function ask_question(){
 	done
 }
 
+
+function st(){
+    wget "https://dl.suckless.org/st/st-0.8.2.tar.gz"
+    tar -xvf st
+    cd st
+    wget "https://st.suckless.org/patches/alpha/st-alpha-0.8.2.diff"
+    patch < st-alpha-0.8.2.diff
+    make 
+    sudo make install
+    cd ../
+    rm -rf st
+}
+
+# install yay
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+
 sudo pacman -Sy nvidia-lts
 sudo pacman -Sy xorg xorg-xinit
 
