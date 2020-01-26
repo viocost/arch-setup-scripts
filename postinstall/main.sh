@@ -2,7 +2,122 @@
 
 # This is main script
 
+## DRIVIER INSTALLERS HELPERS
+function xserver(){
+    echo "Xserver called"
+}
 
+function nvidia(){
+    echo "nvidia called"
+}
+
+function pulse_audio(){
+    echo "Puldeaudio called"
+}
+
+function alsa(){
+    echo "alsa called"
+}
+
+function acpilight(){
+    echo "acpilight called"
+}
+
+
+############################################################
+
+## Packages installers
+
+function chromium (){
+
+}
+
+
+function yay (){
+
+}
+
+function wget (){
+
+}
+
+function  i3_gaps (){
+
+}
+
+function  dunst (){
+
+}
+
+function polybar (){
+
+}
+
+function bspwm (){
+
+}
+
+function  picom (){
+
+}
+
+function dmenu (){
+
+}
+
+function nitrogen (){
+
+}
+
+function gucharmap (){
+
+}
+
+function htop (){
+
+}
+
+function sxiv (){
+
+}
+
+function zathura (){
+
+}
+
+function st (){
+
+}
+
+function tilix (){
+
+}
+
+function emacs (){
+
+}
+
+function nvim (){
+
+}
+
+function ranger (){
+
+}
+
+function zsh (){
+
+}
+
+
+
+declare -A drivers
+
+drivers[1]=xserver
+drivers[2]=nvidia
+drivers[3]=pulse_audio
+drivers[4]=alsa
+drivers[5]=acpilight
 
 dialog --title "Arch Tools Installer" \
 		--checklist "Select drivers you want to install" 0 0 0  \
@@ -16,9 +131,18 @@ DRIVERS=$(cat drivers.tmp)
                 	
 
 clear
+
+echo $(date) "Bootstrap\n\n" | tee bootstrap.log
+echo "Installing drivers\n\n" | tee -a bootstrap.log
 	
-echo $DRIVERS	
-sleep 3
+
+for i in $DRIVERS
+do
+	${drivers[$i]} 2>&1  | tee -a bootstrap.log
+done
+
+sleep 2
+
 
 dialog --title "Arch Tools Installer" \
 	--checklist "Select software you want to install" 0 0 0  \
@@ -47,10 +171,15 @@ dialog --title "Arch Tools Installer" \
 
 clear 
 
+
+echo "\n\n=======================================\n\n" | tee -a bootstrap.log
+echo "\n\nInstalling packages...n\n" | tee -a bootstrap.log
+
 SOFTWARE=$(cat software.tmp)
 
 echo $SOFTWARE
 
+rm *.tmp
 
 
 
