@@ -4,19 +4,23 @@
 
 ## DRIVIER INSTALLERS HELPERS
 function xserver(){
-    echo "Xserver called"
+    echo "Installing X-server"
+    sudo pacman -S xorg xorg-xinit
 }
 
 function nvidia(){
-    echo "nvidia called"
+    echo "Installing nvidia"
+    sudo pacman -S nvidia
 }
 
 function pulse_audio(){
-    echo "Puldeaudio called"
+    echo "Installing pulseaudio"
+    sudo pacman -S pulseaudio
 }
 
 function alsa(){
-    echo "alsa called"
+    echo "Installing alsa"
+    sudo pacman -S alsa-lib alsa-utils
 }
 
 function acpilight(){
