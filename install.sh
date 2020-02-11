@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim sudo dhcpcd netctl 
+pacstrap /mnt base base-devel linux linux-firmware btrfs-progs vim sudo dhcpcd netctl snapper
 
 genfstab -U /mnt > /mnt/etc/fstab
 

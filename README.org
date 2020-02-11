@@ -1,0 +1,6 @@
+* Installation process
+
+
+1. Run btrfs-standard or btrfs-ubuntu to create a standard partition scheme
+2. Run install.sh to install arch kernell and basic packages
+
